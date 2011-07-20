@@ -13,10 +13,6 @@ package engine
 	
 	internal class uiBgStarfield extends uiBg
 	{
-	
-		private const nearStarfield:int = 0;
-		private const midStarfield:int = 1;
-		private const farStarfield:int = 2;
 		private const countStarfield:int = 3;
 		private const starsPerField:int = 20;
 		private const minStarIntensity:int = 0xff;

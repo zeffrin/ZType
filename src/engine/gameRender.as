@@ -48,12 +48,11 @@ package engine
 				// call other render routines in here
 				// doodads, entities, fgdoodads and ui
 				
-				game.tmp.text = game._gametime.getFps().toString();
 				buf.unlock();
 				
 				// switch buffer to be used
 				game._screen.bitmapData = buf;
-			
+				game.tmp.text = game._gametime.getFps().toString();			
 			}
 		}
 	

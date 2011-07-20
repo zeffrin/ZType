@@ -131,11 +131,9 @@ package engine
 			assettype = tmp[1];
 			index = tmp[2];
 			tmp = null;
-			
 			switch(assettype)
 			{
 				case constAssetTypes.SPRITE:
-					trace(Bitmap(LoaderInfo(event.target).content).bitmapData.transparent);
 					i = _sprites.push(Bitmap(LoaderInfo(event.target).content).bitmapData);
 					break;
 				default:

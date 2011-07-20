@@ -10,7 +10,7 @@ package engine
 	{
 		
 		var _animFrames:int;
-		var __animDelay:int;
+		var _animDelay:int;
 		var _animCurrentFrame:int;
 		var _animTileWidth:int;
 		var _animTileHeight:int;
@@ -22,7 +22,7 @@ package engine
 		public function entityAnimated() 
 		{
 			_animFrames = 0;
-			__animDelay = 0;
+			_animDelay = 0;
 			_animCurrentFrame = 0;
 			_animTileWidth = 0;
 			_animTileHeight = 0;
