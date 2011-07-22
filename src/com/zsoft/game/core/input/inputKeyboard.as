@@ -1,5 +1,5 @@
 
-package engine
+package com.zsoft.game.core.input
 {
 	/**
 	 * Encapsulates functions related to keyboard input
@@ -20,7 +20,7 @@ package engine
 	import flash.display.Stage;
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
-	import engine.constKeys;
+	import com.zsoft.game.core.input.Keys;
 	 
 	 
 	public class inputKeyboard

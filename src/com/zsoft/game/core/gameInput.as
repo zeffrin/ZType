@@ -1,30 +1,29 @@
-package engine 
+package com.zsoft.game.core 
 {
 	/**
 	 * This class will maintain all info related to input and relate it to the game
 	 * 
-
-	 * 
-	 
-	 * 
-	 * 
 	 * @author Ben Stephens
 	 */
-	internal class gameInput 
+	
+	import com.zsoft.game.core.input.Keys;
+	import com.zsoft.game.core.input.inputKeyboard;
+	 
+	internal class gameInput
 	{
 	
-		public static function doUpdate(game:GameEngine):void
+		public static function doUpdate(game:Game, timepassed:uint):void
 		{
 			switch(game._gamestate)
 			{
-				case constGameStates.GS_INIT:
-					if (game._inputkb.isKeyDown(constKeys.KEY_ESC))
+				case GameState.Init:
+					if (game._inputkb.isKeyDown(Keys.KEY_ESC))
 					{
 						game.endGame();
 						return;
 					}
-				case constGameStates.GS_MENU:
-					if (game._inputkb.isKeyDown(constKeys.KEY_RARROW))
+				case GameState.Menu:
+					if (game._inputkb.isKeyDown(Keys.KEY_RARROW))
 					{
 						game._mainmenu.x++;
 					}

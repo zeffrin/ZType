@@ -1,6 +1,6 @@
-package engine 
+package com.zsoft.game.core 
 {
-	import engine.GameEngine;
+	import com.zsoft.game.core.gameTime;
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.geom.Point;
@@ -20,7 +20,7 @@ package engine
 	 */
 	internal class gameRender
 	{
-		public static function doRender(game:GameEngine):void
+		public static function doRender(game:Game):void
 		{
 			var buf:BitmapData;
 			with (game)
@@ -30,14 +30,14 @@ package engine
 				buf = _buffers[_buffer];
 				buf.lock();
 				
-				if(_background)
-					_background.doRender(buf, 0, 0);
+				//if(_background)
+				//	_background.doRender(buf, 0, 0);
 				
 				switch(_gamestate)
 				{
-					case constGameStates.GS_INIT:
+					case GameState.Init:
 						break;
-					case constGameStates.GS_MENU:
+					case GameState.Menu:
 						_mainmenu.doRender(buf, 0, 0);
 						break;
 					default:
@@ -52,7 +52,7 @@ package engine
 				
 				// switch buffer to be used
 				game._screen.bitmapData = buf;
-				game.tmp.text = game._gametime.getFps().toString();			
+				game.tmp.text = gameTime.getFps().toString();			
 			}
 		}
 	

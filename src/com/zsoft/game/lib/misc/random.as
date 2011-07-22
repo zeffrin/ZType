@@ -1,10 +1,10 @@
-package engine 
+package com.zsoft.game.lib.misc
 {
 	/**
 	 * ...
 	 * @author Ben Stephens
 	 */
-	public class dataRandom 
+	public class random 
 	{
 		/** 
 		* Generates a truly "random" number

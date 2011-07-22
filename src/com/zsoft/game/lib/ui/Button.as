@@ -1,16 +1,20 @@
-package engine 
+package com.zsoft.game.lib.ui 
 {
 	/**
 	 * Button widget for providing a clickable area on the screen with
 	 * a callback
 	 * @author Ben Stephens
 	 */
-	public class uiButton extends entity implements IClickable
+		
+	 import com.zsoft.game.lib.object.entity;
+	 import com.zsoft.game.lib.proto.IClickable;
+	 
+	 public class Button extends entity implements IClickable
 	{
-		public function uiButton(callback:Function) 
+		public function Button(callback:Function) 
 		{
 			_onclick = callback;
-			_enabled = false;
+			_enabled = true;
 		}
 	
 		/* Implementation for IClickable */

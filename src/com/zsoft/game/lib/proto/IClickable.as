@@ -1,4 +1,4 @@
-package engine 
+package com.zsoft.game.lib.proto
 {
 	
 	/**

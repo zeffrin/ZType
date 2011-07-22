@@ -1,10 +1,10 @@
-package engine 
+package com.zsoft.game.core.input 
 {
 	/**
 	 * Static class provides consts for Keyboard keys
 	 * @author Ben Stephens
 	 */
-	public class constKeys 
+	public class Keys 
 	{
 		public static const KEY_BACKSPACE:int = 8;
 		public static const KEY_ENTER:int = 13;

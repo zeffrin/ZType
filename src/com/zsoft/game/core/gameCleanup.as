@@ -1,8 +1,8 @@
-package engine 
+package com.zsoft.game.core 
 {
 	import flash.events.Event;
 	
-	import engine.GameEngine;
+	import com.zsoft.game.core.Game;
 	/**
 	 * Do everything from Init here but basically in reverse
 	 * 
@@ -14,7 +14,7 @@ package engine
 	 */
 	internal class gameCleanup 
 	{
-		public static function doCleanup(game:GameEngine):void
+		public static function doCleanup(game:Game):void
 		{
 			with (game)
 			{

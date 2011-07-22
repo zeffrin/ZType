@@ -1,5 +1,5 @@
 
-package engine
+package com.zsoft.game.core.input
 {
 	/**
 	 * Encapsulates functions related to mouse input

@@ -1,4 +1,4 @@
-package engine 
+package com.zsoft.game.core.input 
 {
 	/**
 	 * Stores players configured controls
@@ -9,9 +9,9 @@ package engine
 	 * @author Ben Stephens
 	 */
 	
-	 import engine.constKeys;
+	import com.zsoft.game.core.input.Controls;
 	 
-	public class constControls 
+	public class Controls 
 	{
 		/* Consts to represent the buttons our game will use */
 		

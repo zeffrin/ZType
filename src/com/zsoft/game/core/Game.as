@@ -1,20 +1,18 @@
-package engine
+package com.zsoft.game.core
 {
+	import com.zsoft.game.core.data.load;
+	import com.zsoft.game.core.input.Controls;
+	import com.zsoft.game.core.input.Input
+	import com.zsoft.game.core.input.inputKeyboard;
+	import com.zsoft.game.lib.ui.bg.starfield;
+	import com.zsoft.game.lib.ui.Menu;
+	
 	import flash.display.ShaderPrecision;
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.display.Stage;
 	import flash.events.Event;
 	import flash.text.TextField;
-	
-	import engine.gameInit;
-	import engine.gameInput;
-	import engine.gameLoop;
-	import engine.gameRender;
-	import engine.gameCleanup;
-	import engine.constGameStates;
-	import engine.uiBgStarfield;
-	import engine.dataAssets;
 	
 	/**
 	 * GameEngine provides top level for all other game related
@@ -24,29 +22,24 @@ package engine
 	 * 
 	 * @author Ben Stephens
 	 */
-	public class GameEngine
+	public class Game
 	{
 	
-		/* Internal variables */
-		
-
-		
 		internal var _stage:Stage;							// _stage this game engine renders to
 		internal var _running:Boolean;						// Whether the gameloop is running
 		internal var _paused:Boolean;						// Whether the gameloop is paused
 		internal var _gamestate:int;						// The state the gameloop is running in
 		
 		internal var _inputkb:inputKeyboard;				// Our keyboard input module
-		internal var _background:uiBgStarfield;				// Our background module
-		internal var _controls:inputControls;				// Later this should be a variable in the player object
-		internal var _assets:dataAssets;					// Holds sprites and sound samples
-		internal var _gametime:gameTime;					// Game time object
+		internal var _background:starfield;				// Our background module
+		internal var _controls:Controls;					// Later this should be a variable in the player object
+		internal var _loader:load;
 		
 		internal var _buffer:int;
 		internal var _buffers:Array;
 		internal var _screen:Bitmap;
 		
-		internal var _mainmenu:uiMenu;						// menu object
+		internal var _mainmenu:Menu;						// menu object
 
 		internal var stmp:int;
 		internal var tmp:TextField;
@@ -54,7 +47,7 @@ package engine
 		
 		/* Constructor */
 		
-		public function GameEngine(stage:Stage):void
+		public function Game(stage:Stage):void
 		{
 			_stage = stage;
 			_running = false;
@@ -62,18 +55,15 @@ package engine
 			_inputkb = null;
 			_background = null;
 			_controls = null;
-			_assets = null;
 			_buffer = 0;
 			_buffers = null;
 			_screen = null;
-			_gametime = null;
-			
 			_mainmenu = null;
 			
 			stmp = 0;
 			tmp = null;
 			
-			_gamestate = constGameStates.GS_INIT;
+			_gamestate = GameState.Init;
 		}
 		
 		public function startGame():void
@@ -89,9 +79,9 @@ package engine
 		
 		public function loopEvent(e:Event):void
 		{
-			_gametime.doUpdate();
-			gameInput.doUpdate(this);
-			gameLoop.doUpdate(this);
+			gameTime.doUpdate();
+			gameInput.doUpdate(this, gameTime.lastUpdateDiff);
+			gameLoop.doUpdate(this, gameTime.lastUpdateDiff);
 			gameRender.doRender(this);
 		}
 	}
