@@ -43,7 +43,7 @@ package com.zsoft.game.core
 
 		internal var stmp:int;
 		internal var tmp:TextField;
-		
+		internal var heli:Bitmap;
 		
 		/* Constructor */
 		

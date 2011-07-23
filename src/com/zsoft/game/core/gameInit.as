@@ -16,6 +16,7 @@ package com.zsoft.game.core
 	import com.zsoft.game.lib.ui.Menu;
 	import com.zsoft.game.lib.object.entityAnimated;
 	import com.zsoft.game.lib.trajectory.straight;
+	import com.zsoft.game.lib.misc.random;
 	
 	/**
 	 * ...
@@ -53,28 +54,32 @@ package com.zsoft.game.core
 				_gametime = new gameTime();
 				
 				_background = new starfield(_stage.stageWidth, _stage.stageHeight);
-				_background.trajectory.speed = 40;  // pixels per second
+				_background.trajectory.speed = 3;  // pixels per second
 				_background.trajectory.angle = 90;
 				_mainmenu = new Menu(game);
 				_mainmenu.background = _background;
 				
+				heli = _loader.loadImage("heli.png");
 				
 				var test:Array = new Array(1);
-				for (var k:int = 0; k < 1; k++)
+				for (var k:int = 0; k < 3000; k++)
 				{
 					test[k] = new entityAnimated();
 					test[k].Delay = 70;
 					test[k].Frames = 5;
+					test[k].CurrentFrame = k % 5;
 					test[k].TileHeight = 52;
+					test[k].bitmap = heli;
 					test[k].TileWidth = 128;
 					test[k].TileRows = 1;
 					test[k].TileColumns = 5;
-					test[k].x = k * 128;
-					test[k].y = k * 52;
+					test[k].x = 200;
+					test[k].y = 000;
 					test[k].trajectory = new straight();
-					test[k].trajectory.speed = 3;
-					test[k].trajectory.angle = 20;
-					_loader.loadImage("heli.png", test[k]);
+					test[k].trajectory.speed = 10;
+					test[k].trajectory.angle = random.randomNumber(0, 2);
+					trace(test[k].trajectory.angle);
+
 					_mainmenu.addChild (test[k]);
 				}
 			

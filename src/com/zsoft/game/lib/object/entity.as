@@ -2,6 +2,7 @@ package com.zsoft.game.lib.object
 {
 	import com.zsoft.game.lib.trajectory.Trajectory;
 	import flash.geom.Point;
+	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import com.zsoft.game.core.gameTime;
 		/**
@@ -16,16 +17,18 @@ package com.zsoft.game.lib.object
 		private var _width:int;
 		private var _height:int;
 		protected var _visible:Boolean;
-		protected var _bitmapData:BitmapData;
+		protected var _bitmap:Bitmap;
 		protected var _trajectory:Trajectory;
+		protected var _drawpos:Point;
 		
 		public function entity() 
 		{
 			_pos = new Point(0, 0);
+			_drawpos = new Point(0, 0);
 			_visible = true;
 			_width = 0;
 			_height = 0;
-			_bitmapData = null;
+			_bitmap = null;
 			_trajectory = null;
 
 		}
@@ -48,8 +51,8 @@ package com.zsoft.game.lib.object
 		public function get visible():Boolean { return _visible; }
 		public function set visible(val:Boolean):void { _visible = val; }
 		
-		public function get bitmapData():BitmapData { return _bitmapData; }
-		public function set bitmapData(val:BitmapData):void { _bitmapData = val; }
+		public function get bitmap():Bitmap { return _bitmap; }
+		public function set bitmap(val:Bitmap):void { _bitmap = val; }
 		
 		public function get trajectory():Trajectory { return _trajectory; }
 		public function set trajectory(val:Trajectory):void { _trajectory = val; }
@@ -57,7 +60,7 @@ package com.zsoft.game.lib.object
 		public function doCleanup():void
 		{
 			_visible = false;
-			_bitmapData = null;
+			_bitmap = null;
 			_trajectory = null;
 			return;
 		}
@@ -73,8 +76,10 @@ package com.zsoft.game.lib.object
 		
 		public function doRender(buf:BitmapData, x:Number, y:Number):void
 		{
-			if(_bitmapData)
-				buf.copyPixels(_bitmapData, _bitmapData.rect, new Point(x + this.x, y + this.y));
+			_drawpos.x = x + this.x;
+			_drawpos.y = y + this.y;
+			if(_bitmap.bitmapData)
+				buf.copyPixels(_bitmap.bitmapData, _bitmap.bitmapData.rect, _drawpos);
 			return;
 		}
 	}

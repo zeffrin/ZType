@@ -15,30 +15,34 @@ package com.zsoft.game.core.data
 	 
 	public class load 
 	{
+		private var _bitmaps:Dictionary;
 		private var _loaders:Dictionary;
 		private var _queue:int;
 	
 		public function load() 
 		{
+			_bitmaps = new Dictionary(false);
 			_loaders = new Dictionary(false);
 			_queue = 0;
 		}
 		
 		// adds to download queue and returns length of queue
-		public function loadImage(url:String, img:entity):int
+		public function loadImage(url:String):Bitmap
 		{
 			var l:Loader = new Loader();
 			l.contentLoaderInfo.addEventListener(Event.COMPLETE, imageComplete);
 			l.load(new URLRequest(url));
-			_loaders[l] = img;
+			var b:Bitmap = new Bitmap();
+			_loaders[l] = b;
+			_bitmaps[url] = b;
 			_queue++;
-			return _queue;
+			return b;
 		}
 		
 		private function imageComplete(ev:Event):void
 		{
-			var i:entity = _loaders[ev.target.loader];
-			i.bitmapData = ev.target.content.bitmapData;
+			var b:Bitmap = _loaders[ev.target.loader];
+			b.bitmapData = ev.target.content.bitmapData;
 			delete _loaders[ev.target];
 			_queue--
 		}

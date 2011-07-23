@@ -1,4 +1,4 @@
-package com.zsoft.game.lib.trajectory 
+package com.zsoft.game.lib.proto 
 {
 	import flash.geom.Point;
 	

@@ -30,9 +30,6 @@ package com.zsoft.game.core
 				buf = _buffers[_buffer];
 				buf.lock();
 				
-				//if(_background)
-				//	_background.doRender(buf, 0, 0);
-				
 				switch(_gamestate)
 				{
 					case GameState.Init:
