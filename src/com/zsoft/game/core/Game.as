@@ -1,6 +1,7 @@
 package com.zsoft.game.core
 {
 	import com.zsoft.game.core.data.load;
+	import com.zsoft.game.core.data.opacitybuffer;
 	import com.zsoft.game.core.input.Controls;
 	import com.zsoft.game.core.input.Input
 	import com.zsoft.game.core.input.inputKeyboard;
@@ -26,6 +27,7 @@ package com.zsoft.game.core
 	{
 	
 		internal var _stage:Stage;							// _stage this game engine renders to
+		internal var _opacitybuffer:opacitybuffer;			// BitmapData array of 1x1 from 0 - 255 containing alpha shades
 		internal var _running:Boolean;						// Whether the gameloop is running
 		internal var _paused:Boolean;						// Whether the gameloop is paused
 		internal var _gamestate:int;						// The state the gameloop is running in
@@ -44,6 +46,7 @@ package com.zsoft.game.core
 		internal var stmp:int;
 		internal var tmp:TextField;
 		internal var heli:Bitmap;
+		internal var gamestate:GameState;
 		
 		/* Constructor */
 		
@@ -59,6 +62,8 @@ package com.zsoft.game.core
 			_buffers = null;
 			_screen = null;
 			_mainmenu = null;
+			gamestate = null;
+			_opacitybuffer = null;
 			
 			stmp = 0;
 			tmp = null;

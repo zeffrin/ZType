@@ -4,12 +4,14 @@ package
 	import flash.events.Event;
 	import com.zsoft.game.core.Game;
 	import com.junkbyte.console.Cc;
-	
+	import flash.display.StageScaleMode;
+	import flash.system.ApplicationDomain;
+	import flash.display.StageDisplayState;
 	/**
 	 * ...
 	 * @author Ben Stephens
 	 */
-	public class Main extends Sprite
+	 public class Main extends Sprite
 	{
 		public function Main():void 
 		{
@@ -22,6 +24,10 @@ package
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
 
+			stage.scaleMode = StageScaleMode.SHOW_ALL;
+			
+			//stage.displayState=StageDisplayState.FULL_SCREEN
+			
 			var game:Game = new Game(stage);
 			game.startGame();
 			

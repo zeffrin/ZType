@@ -4,6 +4,7 @@ package com.zsoft.game.lib.object
 	import flash.display.BitmapData;
 	import flash.geom.Rectangle;
 	import flash.geom.Point;
+	import com.zsoft.game.core.data.opacitybuffer;
 	/**
 	 * ...
 	 * @author Ben Stephens
@@ -58,8 +59,10 @@ package com.zsoft.game.lib.object
 		{
 			_drawpos.x = this.x + x;
 			_drawpos.y = this.y + y;
-			if(_bitmap.bitmapData)
-				buf.copyPixels(_bitmap.bitmapData, _framerect, _drawpos);
+			if (_bitmap.bitmapData)
+			{
+				buf.copyPixels(_bitmap.bitmapData, _framerect, _drawpos, opacitybuffer.instance.getOpacityBmp(_opacity), null, true);
+			}
 			return;
 		}
 		

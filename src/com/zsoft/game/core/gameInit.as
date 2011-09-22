@@ -1,5 +1,6 @@
 package com.zsoft.game.core 
 {
+	import com.zsoft.game.core.data.opacitybuffer;
 	import com.zsoft.game.lib.object.entity;
 	import com.zsoft.game.lib.ui.Bg;
 	import com.zsoft.game.lib.ui.bg.starfield;
@@ -49,21 +50,28 @@ package com.zsoft.game.core
 				{
 					_buffers[i] = new BitmapData(_stage.stageWidth, _stage.stageHeight, false, 0x00000000);
 				}
+				
 				_screen = new Bitmap(null, "auto", true);
 				_stage.addChild(_screen); // place holder for the current buffer being output
 				_gametime = new gameTime();
+
+				_opacitybuffer = new opacitybuffer();
+				
+				/* stuff which will move out of core below */
+				
 				
 				_background = new starfield(_stage.stageWidth, _stage.stageHeight);
-				_background.trajectory.speed = 3;  // pixels per second
+				_background.trajectory.speed = 55;  // pixels per second
 				_background.trajectory.angle = 90;
 				_mainmenu = new Menu(game);
 				_mainmenu.background = _background;
 				
 				heli = _loader.loadImage("heli.png");
 				
-				var test:Array = new Array(1);
+			 game.gamestate = new GameState();
+				var test:Array = new Array(3000);
 				for (var k:int = 0; k < 3000; k++)
-				{
+				{ 
 					test[k] = new entityAnimated();
 					test[k].Delay = 70;
 					test[k].Frames = 5;
@@ -73,16 +81,19 @@ package com.zsoft.game.core
 					test[k].TileWidth = 128;
 					test[k].TileRows = 1;
 					test[k].TileColumns = 5;
-					test[k].x = 200;
-					test[k].y = 000;
+					test[k].x = 300;
+					test[k].opacity = random.randomNumber(0, 200);
+					test[k].y = 300;
 					test[k].trajectory = new straight();
-					test[k].trajectory.speed = 10;
-					test[k].trajectory.angle = random.randomNumber(0, 2);
-					trace(test[k].trajectory.angle);
-
+					test[k].trajectory.speed = random.randomNumber(2, 100);
+					test[k].trajectory.angle = random.randomNumber(0, 2 * Math.PI);
 					_mainmenu.addChild (test[k]);
 				}
 			
+				
+				game.gamestate.background = _background;
+				
+				
 				// load our initial assets (could do a loading screen here and use the Intro gamestate)
 				// will have to add progress bar as a ui widget Im sure
 			

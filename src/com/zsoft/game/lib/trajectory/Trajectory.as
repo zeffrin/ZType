@@ -18,7 +18,7 @@ package com.zsoft.game.lib.trajectory
 		{
 			_speed = 0;
 			_angle = 0;
-			_owner = owner;
+			_owner = null;
 		}
 		
 		public function get owner():entity { return _owner; }

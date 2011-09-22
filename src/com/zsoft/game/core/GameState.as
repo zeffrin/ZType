@@ -1,5 +1,6 @@
 package com.zsoft.game.core 
 {
+	import com.zsoft.game.lib.ui.Bg;
 	/**
 	 * ...
 	 * @author Ben Stephens
@@ -13,6 +14,26 @@ package com.zsoft.game.core
 		public static const Running:int = 4;
 		public static const Credits:int = 8;
 		public static const Score:int = 16;
+		
+		private var _clickables:Array;
+		private var _entities:Array;
+		private var _background:Bg;
+		
+		public function GameState():void
+		{
+			_clickables = new Array();
+			_entities = new Array();
+		}
+		
+		public function get clickables():Array { return _clickables; }
+		public function set clickables(val:Array):void { _clickables = val; }
+		
+		public function get entities():Array { return _entities; }
+		public function set entities(val:Array):void { _entities = val; }
+		
+		public function get background():Bg { return _background; }
+		public function set background(val:Bg):void { _background = val; }
+		
 	}
 
 }
